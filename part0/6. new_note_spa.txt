@@ -1,0 +1,21 @@
+title /spa - new_note \n #fullstackopen2020
+
+note over browser:
+user submits a note by clicking a button
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa \n with note content as a body
+server-->browser: server sends 201 
+
+note over server:
+server adds user's note to data.json
+Next time browsers GETs it it contains
+the added note
+end note:
+
+note over browser:
+browser rerenders just notes on its own 
+with a now one added (client side)
+
+It does not require a rerender of an entire page.
+end note

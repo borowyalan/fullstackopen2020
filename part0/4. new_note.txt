@@ -1,0 +1,39 @@
+title /notes - new_note \n #fullstackopen2020
+
+note over browser:
+user submits a note by clicking a button
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note \n with note content as a body
+
+note over server:
+server adds user's note to data.json
+end note:
+
+server->browser: server sends a 302 HTTP status code which redirects the browser to /notes
+
+note over browser:
+browser needs to fetch the /notes' HTML, 
+main.css and main.js once again
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data, 
+now with user's note, from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: [{ content: "HTML is easy", date: "2020-05-12" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
